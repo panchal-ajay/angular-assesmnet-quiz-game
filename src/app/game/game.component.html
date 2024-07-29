@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+  <span class="spacer"></span>
+  <span>Welcome, {{ userName }}!</span>
+</mat-toolbar>
+
+<div *ngIf="question">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ question.question }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngFor="let option of question.options">
+        <button mat-button (click)="userAnswer = option">{{ option }}</button>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="submitAnswer()">
+        Submit
+      </button>
+      <button mat-raised-button color="warn" (click)="quitGame()">Quit</button>
+      <button
+        mat-raised-button
+        color="accent"
+        [disabled]="lifelines.fiftyFifty"
+        (click)="useLifeline('fiftyFifty')"
+      >
+        50-50
+      </button>
+      <button
+        mat-raised-button
+        color="accent"
+        [disabled]="lifelines.askTheAI"
+        (click)="useLifeline('askTheAI')"
+      >
+        Ask The AI
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <div class="prize-display">
+    <span *ngIf="prize > 0">You have won: Rs {{ prize }}</span>
+  </div>
+</div>
