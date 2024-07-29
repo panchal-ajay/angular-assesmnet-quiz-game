@@ -78,6 +78,12 @@ export class GameService {
   getCurrentPrize(): number {
     return this.currentPrize;
   }
+  getCurrentLevel(): number {
+    return this.currentQuestionIndex + 1;
+  }
+  setUserLevel(level: number) {
+    localStorage.setItem('userLevel', level.toString());
+  }
   IsLoggedIn() {
     return localStorage.getItem('accessToken') != null;
   }
