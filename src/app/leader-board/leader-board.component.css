@@ -1,0 +1,110 @@
+.leaderboard {
+    padding: 16px;
+    margin: 0 auto;
+    max-width: 800px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: center; /* Center the heading and button horizontally */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 20px;
+    position: relative; /* To allow absolute positioning of the button */
+  }
+  .header-container h2 {
+    margin: 0;
+    text-align: center;
+    flex: 1; /* Allow the heading to take up remaining space */
+    font-size: 32px; /* Larger font size for prominence */
+    font-weight: 700; /* Bold font weight */
+    color: #333; /* Dark gray color for good readability */
+    text-transform: uppercase; /* Uppercase text for emphasis */
+    letter-spacing: 1px; /* Slightly spaced letters for a refined look */
+    background: linear-gradient(to right, #5d8abb, #004085); /* Gradient background */
+    -webkit-background-clip: text; /* Gradient text effect */
+    color: transparent; /* Make text transparent to show gradient */
+    padding: 10px 0; /* Padding around the heading */
+    border-bottom: 3px solid #5d8abb; /* Bottom border to add emphasis */
+  }
+  
+  
+  .header-container button {
+    position: absolute;
+    left: 0;
+    background-color: #5d8abb;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .header-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .header-container button:focus {
+    outline: none;
+  }
+  
+  .header-container button:active {
+    background-color: #004085;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  td {
+    background-color: #fafafa;
+  }
+  
+  tr:nth-child(even) td {
+    background-color: #f9f9f9;
+  }
+  
+  tr:hover td {
+    background-color: #f1f1f1;
+  }
+  
+  @media (max-width: 600px) {
+    table, th, td {
+      display: block;
+      width: 100%;
+    }
+  
+    th, td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    }
+  
+    th::before, td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      width: 50%;
+      padding-left: 10px;
+      text-align: left;
+      font-weight: bold;
+    }
+  }
+  

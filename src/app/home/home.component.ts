@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { Router } from "@angular/router";
 import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home",
@@ -15,8 +15,11 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 export class HomeComponent {
   constructor(private router: Router) {}
 
-  startGame() {
-    localStorage.setItem("userLevel", "1");
+  startQuiz() {
     this.router.navigate(["/user"]);
+  }
+
+  viewLeaderboard() {
+    this.router.navigate(["/leader-board"]);
   }
 }

@@ -12,7 +12,18 @@
     </mat-card-header>
     <mat-card-content>
       <div *ngFor="let option of question.options">
-        <button mat-button (click)="userAnswer = option">{{ option }}</button>
+        <button
+          mat-button
+          class="option-button"
+          (click)="selectOption(option)"
+          [disabled]="isOptionDisabled(option) || option === userAnswer"
+          [ngClass]="{
+            'disabled-option': isOptionDisabled(option) || option === userAnswer,
+            'selected-option': option === userAnswer
+          }"
+        >
+          {{ option }}
+        </button>
       </div>
     </mat-card-content>
     <mat-card-actions>
@@ -42,3 +53,4 @@
     <span *ngIf="prize > 0">You have won: Rs {{ prize }}</span>
   </div>
 </div>
+  

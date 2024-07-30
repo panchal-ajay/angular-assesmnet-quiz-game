@@ -1,0 +1,16 @@
+.disabled-option {
+    color: rgb(0, 0, 0);
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: #f0f0f0; /* Light gray background */
+  }
+  
+  .selected-option {
+    background-color: #94e0e9; /* Slightly darker gray for selected */
+    border: 2px solid #fcfcfc; /* Bold border to highlight selection */
+  }
+  
+  .option-button {
+    margin-bottom: 10px; /* Adjust this value to add more space */
+  }
+  

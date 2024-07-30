@@ -1,0 +1,23 @@
+<div class="leaderboard">
+    <div class="header-container">
+      <button (click)="goHome()">Back to Home</button>
+      <h2>Leaderboard</h2>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Level</th>
+          <th>Prize Pool</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.userName }}</td>
+          <td>{{ user.userLevel }}</td>
+          <td>Rs {{ user.prizePool }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
