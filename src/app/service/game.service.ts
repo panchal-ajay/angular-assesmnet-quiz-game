@@ -103,7 +103,6 @@ export class GameService {
     return localStorage.getItem("userLevel");
   }
   getCurrentQuestionIndex(): number {
-    console.log("this.currentQuestionIndex: ", this.currentQuestionIndex);
     return this.currentQuestionIndex;
   }
   setUserLevel(level: string) {

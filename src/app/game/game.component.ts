@@ -98,7 +98,6 @@ export class GameComponent implements OnInit, OnDestroy {
   loadQuestion() {
     this.question = this.gameService.getQuestion();
     this.prize = this.gameService.getCurrentPrize();
-    console.log("this.prize: ", this.prize);
     this.currentQuestionIndex = this.gameService.getCurrentQuestionIndex();
     this.hint = ""; // Hide the hint when loading a new question
   }
@@ -126,6 +125,8 @@ export class GameComponent implements OnInit, OnDestroy {
       alert(
         `Congratulations ${this.userName}! You have answered all questions correctly.`
       );
+      this.gameStarted = false;
+      this.saveUserDetails()
       this.router.navigate(["/leader-board"]);
     } else {
       this.loadQuestion();
