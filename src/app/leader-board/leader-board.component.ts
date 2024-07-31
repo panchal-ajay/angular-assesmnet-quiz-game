@@ -27,10 +27,8 @@ export class LeaderBoardComponent implements OnInit {
         };
       });
     }
-    localStorage.setItem("users", JSON.stringify(this.users));
   }
   goHome() {
-    this.router.navigate(["/home"]);
+    this.router.navigateByUrl("/home");
   }
 }
-

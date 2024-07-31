@@ -20,21 +20,22 @@ export class GameComponent implements OnInit, OnDestroy {
     fiftyFifty: false,
     askTheAI: false,
   };
+  hint: string = "";
   prize: number = 0;
   userName: any = "";
   userLevel: any = 1;
   userId: number | null = null;
   gameStarted: boolean = false;
   users: any[] = [];
-  totalQuestions: number = 0; // Total number of questions
-  currentQuestionIndex: number = 0; // Track current question index
+  totalQuestions: number = 0;
+  currentQuestionIndex: number = 0;
 
   constructor(private gameService: GameService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadUserDetails();
     if (this.gameStarted) {
-      this.totalQuestions = this.gameService.getTotalQuestions(); // Initialize total questions
+      this.totalQuestions = this.gameService.getTotalQuestions();
       this.loadQuestion();
     } else {
       alert("Game already played or user not found. You cannot play again.");
@@ -70,7 +71,7 @@ export class GameComponent implements OnInit, OnDestroy {
     this.userLevel = this.gameService.getCurrentLevel();
     this.prize = this.gameService.getCurrentPrize();
     this.gameStarted = true;
-    this.saveUserDetails(); // Save initial state for the new user
+    this.saveUserDetails();
   }
 
   saveUserDetails() {
@@ -99,6 +100,7 @@ export class GameComponent implements OnInit, OnDestroy {
     this.prize = this.gameService.getCurrentPrize();
     console.log("this.prize: ", this.prize);
     this.currentQuestionIndex = this.gameService.getCurrentQuestionIndex();
+    this.hint = ""; // Hide the hint when loading a new question
   }
 
   submitAnswer() {
@@ -112,28 +114,30 @@ export class GameComponent implements OnInit, OnDestroy {
       this.allCorrectAns();
     } else {
       alert("Incorrect answer! Game over.");
-      this.gameStarted = false; // Mark game as ended
-      this.saveUserDetails(); // Save current state even if the game ends
+      this.gameStarted = false;
+      this.saveUserDetails();
       this.router.navigate(["/leader-board"]);
     }
   }
 
   allCorrectAns() {
-    this.currentQuestionIndex = this.gameService.getCurrentQuestionIndex(); // Update the current question index
+    this.currentQuestionIndex = this.gameService.getCurrentQuestionIndex();
     if (this.currentQuestionIndex >= this.totalQuestions) {
       alert(
-        `Congratulations ${this.userName}! You have answered all questions correctly.
-        `
+        `Congratulations ${this.userName}! You have answered all questions correctly.`
       );
       this.router.navigate(["/leader-board"]);
     } else {
       this.loadQuestion();
     }
   }
+
   useLifeline(lifeline: "fiftyFifty" | "askTheAI") {
     this.gameService.useLifeline(lifeline);
     this.lifelines[lifeline] = true;
-    this.loadQuestion();
+    if (lifeline === "askTheAI") {
+      this.hint = this.gameService.getHint();
+    }
   }
 
   quitGame() {
@@ -142,6 +146,7 @@ export class GameComponent implements OnInit, OnDestroy {
     this.saveUserDetails();
     this.router.navigate(["/leader-board"]);
   }
+
   isOptionDisabled(option: string) {
     if (this.lifelines.fiftyFifty) {
       const disabledOptions = this.gameService.getDisabledOptions();
@@ -149,6 +154,7 @@ export class GameComponent implements OnInit, OnDestroy {
     }
     return false;
   }
+
   selectOption(option: string) {
     this.userAnswer = option;
   }

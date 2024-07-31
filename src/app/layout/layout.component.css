@@ -1,22 +1,46 @@
 .example-button-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; 
-  }
-  
-  button[mat-flat-button] {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button[mat-flat-button]:hover {
-    background-color: #0056b3;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  background: linear-gradient(135deg, #4a90e2, #d6e3f0); /* Gradient background for a modern look */
+  text-align: center; /* Center text */
+  padding: 20px; /* Padding around the content */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+}
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+button[mat-flat-button] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px; /* Slightly larger padding */
+  font-size: 18px; /* Slightly larger font size */
+  border-radius: 6px; /* Slightly larger border radius */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for a lifted effect */
+}
+
+button[mat-flat-button]:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+button[mat-flat-button]:active {
+  background-color: #004085;
+  transform: translateY(0); /* Return to original position on click */
+}
+
+button[mat-flat-button]:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Focus ring effect */
+}

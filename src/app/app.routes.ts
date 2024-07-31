@@ -13,17 +13,31 @@ export const AppRoutingModule: Routes = [
     component: LayoutComponent,
     pathMatch: "full",
   },
-  { path: "home", component: HomeComponent, canActivate: [AuthGuard] },
+  {
+    path: "home",
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: "Home",
+    },
+  },
   {
     path: "game",
     component: GameComponent,
     canActivate: [AuthGuard],
-    // canDeactivate: [GameDeactivateGuard],
+    canDeactivate: [GameDeactivateGuard],
+    data: { title: "Game" },
   },
-  { path: "user", component: UserComponent, canActivate: [AuthGuard] },
+  {
+    path: "user",
+    component: UserComponent,
+    canActivate: [AuthGuard],
+    data: { title: "User" },
+  },
   {
     path: "leader-board",
     component: LeaderBoardComponent,
     canActivate: [AuthGuard],
+    data: { title: "Leader Board" },
   },
 ];

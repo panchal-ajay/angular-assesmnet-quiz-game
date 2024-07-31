@@ -18,7 +18,8 @@
           (click)="selectOption(option)"
           [disabled]="isOptionDisabled(option) || option === userAnswer"
           [ngClass]="{
-            'disabled-option': isOptionDisabled(option) || option === userAnswer,
+            'disabled-option':
+              isOptionDisabled(option) || option === userAnswer,
             'selected-option': option === userAnswer
           }"
         >
@@ -50,7 +51,10 @@
     </mat-card-actions>
   </mat-card>
   <div class="prize-display">
-    <span *ngIf="prize > 0">You have won: Rs {{ prize }}</span>
+    <span *ngIf="currentQuestionIndex > 0">You have won: Rs {{ prize }}</span>
+  </div>
+  <div *ngIf="hint" class="hint-container">
+    <div class="hint-title">Hint</div>
+    <div class="hint-content">{{ hint }}</div>
   </div>
 </div>
-  
